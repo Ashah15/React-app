@@ -1,30 +1,67 @@
-import operate from './operate';
+import operate from './operate'
 
-export default function calculate(calcData, buttonName) {
-  let { total, next, operation } = calcData;
-  const operators = ['+', '-', '÷', 'X', '%'];
+const calculate = (dataObj, buttonName) => {
+  const regex = new RegExp('^[0-9]|[.]+$');
 
   if (buttonName === 'AC') {
-    total = 0;
-    next = null;
-    operation = null;
+    return {
+      total: null,
+      next: null,
+      operation: null
+    }
   } else if (buttonName === '+/-') {
-    total *= -1;
-    next *= -1;
-  } else if (buttonName === '%') {
-    total = operate(total, next, operation);
-    next = null;
-    operation = null;
-  } else if (operators.includes(buttonName)) {
-    operate(total, next, operation);
-  } else if ((buttonName === '=') && (next && total)) {
-    total = operate(total, next, operation);
-    next = null;
-    operation = null;
-  } else if (buttonName === '.' && next) {
-    if (!next.includes('.')) {
-      next += '.';
+    if (dataObj.total !== null) {
+      return {
+        total: (Number(dataObj.total) * -1).toString()
+      }
+    } else if (dataObj.next !== null) {
+      return {
+        next: (Number(dataObj.next) * -1).toString()
+      }
     }
   }
-  return { total, next, operation };
+
+  if (buttonName !== '=') {
+    if (regex.test(buttonName)) {
+      if (dataObj.total === null) {
+        return {
+          total: buttonName
+        }
+      } else if (dataObj.total !== null && dataObj.operation === null) {
+        return {
+          total: dataObj.total + buttonName
+        }
+      }
+      else if (dataObj.total !== null && dataObj.operation !== null) {
+        if (dataObj.next !== null) {
+          return {
+            next: dataObj.next + buttonName
+          }
+        } else {
+          return {
+            next: buttonName
+          }
+        }
+      }
+    } else {
+      if (dataObj.operation === null) {
+        return {
+          operation: buttonName
+        }
+      } else {
+        return {
+          total: operate(dataObj.total, dataObj.next, dataObj.operation),
+          next: null,
+          operation: buttonName
+        }
+      }
+    }
+  } else {
+    return {
+      total: operate(dataObj.total, dataObj.next, dataObj.operation) !== 'error' ? operate(dataObj.total, dataObj.next, dataObj.operation) : null,
+      next: null
+    }
+  }
 }
+
+export default calculate;
