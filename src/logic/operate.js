@@ -1,20 +1,34 @@
-import Big from 'big.js';
+import Big from 'big.js'
 
-export default function operate(numberOne, numberTwo, operation) {
-  let result;
-  const firstNumber = Big(numberOne);
-  const secondNumber = Big(numberTwo);
+const operate = (numberOne, numberTwo, operator) => {
+  const regex = new RegExp('[.]{2,}');
 
-  if (operation === '+') {
-    result = firstNumber.plus(secondNumber);
-  } else if (operation === '-') {
-    result = firstNumber.minus(secondNumber);
-  } else if (operation === 'x') {
-    result = firstNumber.times(secondNumber);
-  } else if (operation === '÷') {
-    result = firstNumber.div(secondNumber);
-  } else if (operation === '%') {
-    result = firstNumber.mod(secondNumber);
+  if (regex.test(numberOne) || regex.test(numberTwo)) {
+    return 'error'
+  } else {
+    let numOne = numberOne === null ? Big(0) : Big(numberOne)
+    let numTwo = numberTwo === null ? Big(0) : Big(numberTwo)
+
+    switch (operator) {
+      case "+":
+        return numOne.plus(numTwo).toString();
+
+      case "-":
+        return numOne.minus(numTwo).toString();
+
+      case "x":
+        return numOne.times(numTwo).toString();
+
+      case "/":
+        return numOne.div(numTwo).toString();
+
+      case "%":
+        return (numOne / 100) * numTwo
+
+      default:
+        return 'error'
+    }
   }
-  return result;
 }
+
+export default operate;
