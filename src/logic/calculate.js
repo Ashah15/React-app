@@ -1,4 +1,4 @@
-import operate from './operate'
+import operate from './operate';
 
 const calculate = (dataObj, buttonName) => {
   const regex = new RegExp('^[0-9]|[.]+$');
@@ -7,17 +7,17 @@ const calculate = (dataObj, buttonName) => {
     return {
       total: null,
       next: null,
-      operation: null
-    }
-  } else if (buttonName === '+/-') {
+      operation: null,
+    };
+  } if (buttonName === '+/-') {
     if (dataObj.total !== null) {
       return {
-        total: (Number(dataObj.total) * -1).toString()
-      }
-    } else if (dataObj.next !== null) {
+        total: (Number(dataObj.total) * -1).toString(),
+      };
+    } if (dataObj.next !== null) {
       return {
-        next: (Number(dataObj.next) * -1).toString()
-      }
+        next: (Number(dataObj.next) * -1).toString(),
+      };
     }
   }
 
@@ -25,43 +25,41 @@ const calculate = (dataObj, buttonName) => {
     if (regex.test(buttonName)) {
       if (dataObj.total === null) {
         return {
-          total: buttonName
-        }
-      } else if (dataObj.total !== null && dataObj.operation === null) {
+          total: buttonName,
+        };
+      } if (dataObj.total !== null && dataObj.operation === null) {
         return {
-          total: dataObj.total + buttonName
-        }
+          total: dataObj.total + buttonName,
+        };
       }
-      else if (dataObj.total !== null && dataObj.operation !== null) {
+      if (dataObj.total !== null && dataObj.operation !== null) {
         if (dataObj.next !== null) {
           return {
-            next: dataObj.next + buttonName
-          }
-        } else {
-          return {
-            next: buttonName
-          }
+            next: dataObj.next + buttonName,
+          };
         }
+        return {
+          next: buttonName,
+        };
       }
     } else {
       if (dataObj.operation === null) {
         return {
-          operation: buttonName
-        }
-      } else {
-        return {
-          total: operate(dataObj.total, dataObj.next, dataObj.operation),
-          next: null,
-          operation: buttonName
-        }
+          operation: buttonName,
+        };
       }
+      return {
+        total: operate(dataObj.total, dataObj.next, dataObj.operation),
+        next: null,
+        operation: buttonName,
+      };
     }
   } else {
     return {
       total: operate(dataObj.total, dataObj.next, dataObj.operation) !== 'error' ? operate(dataObj.total, dataObj.next, dataObj.operation) : null,
-      next: null
-    }
+      next: null,
+    };
   }
-}
+};
 
 export default calculate;
