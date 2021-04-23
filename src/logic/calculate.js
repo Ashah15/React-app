@@ -56,7 +56,8 @@
 //     }
 //   } else {
 //     return {
-//       total: operate(dataObj.total, dataObj.next, dataObj.operation) !== 'error' ? operate(dataObj.total, dataObj.next, dataObj.operation) : null,
+//       total: operate(dataObj.total, dataObj.next, dataObj.operation) !== 'error' ?
+// operate(dataObj.total, dataObj.next, dataObj.operation) : null,
 //       next: null,
 //     };
 //   }
@@ -88,4 +89,4 @@ const calculate = (data, name) => {
   return result;
 };
 
-export default 
+export default calculate;
