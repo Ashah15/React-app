@@ -12,33 +12,40 @@
 //   );
 // }
 
-import React from 'react';// eslint-disable-line no-unused-vars
-import './App.css';
-import Display from './Display' // eslint-disable-line no-unused-vars
-import ButtonPanel from './ButtonPanel' // eslint-disable-line no-unused-vars
-import calculate from '../logic/calculate' // eslint-disable-line no-unused-vars
+import React from 'react';
+import ButtonPanel from './ButtonPanel';
+import Display from './Display';
+import calculate from '../logic/calculate';
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      total: null,
+      result: '0',
       next: null,
-      operation: null
-    }
+      operation: null,
+    };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  clickHandler = (button) => {
-    this.setState(calculate(this.state, button))
+  handleClick(buttonName) {
+    const { result, next, operation } = this.state;
+    const calcData = calculate({ result, next, operation }, buttonName);
+    this.setState({
+      result: calcData.result,
+      next: calcData.next,
+      operation: calcData.operation,
+    });
   }
+
   render() {
+    const { next, result, operation } = this.state;
     return (
-      <div className="App" >
-        <Display result={this.state.next || this.state.total || '0'} />
-        <ButtonPanel clickHandler={this.clickHandler} operation={this.state.operation === 'null' ? '' : this.state.operation} />
+      <div className="app d-flex flex-column mt-5">
+        <Display result={result} next={next} operation={operation} />
+        <ButtonPanel clickHandler={buttonName => this.handleClick(buttonName)} />
       </div>
     );
   }
 }
-
-export default App;
