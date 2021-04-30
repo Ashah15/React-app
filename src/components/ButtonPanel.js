@@ -1,38 +1,44 @@
-import React from 'react';
-import Button from './Button';
+import React from 'react'; // eslint-disable-line no-unused-vars
+import Button from './Button' // eslint-disable-line no-unused-vars
 
-export default function ButtonPanel() {
+const ButtonPanel = (props) => {
+  const group1 = ['AC', '+/-', '%', '/']
+  const group2 = ['7', '8', '9', 'x']
+  const group3 = ['4', '5', '6', '-']
+  const group4 = ['1', '2', '3', '+']
+  const group5 = ['0', '.', '=']
+
+  const buttonGroups = (group) => group.map((button) =>
+    (button === '0' ? <Button key={button} name={button} width={true} clickHandler={props.clickHandler} />
+      : (button === group[group.length - 1] ? (props.operation === button
+        ? <Button key={button} name={button} color='white' width={false} clickHandler={props.clickHandler} />
+        : <Button key={button} name={button} color='orange' width={false} clickHandler={props.clickHandler} />)
+        : <Button key={button} name={button} width={false} clickHandler={props.clickHandler} />))
+  )
+
+
   return (
-    <div className="Groups">
-      <div className="Group1 d-flex justify-content-around">
-        <Button name="AC" />
-        <Button name="+/-" />
-        <Button name="%" />
-        <Button name="÷" />
+    <div className='buttonPanel'>
+      <div>
+        {buttonGroups(group1)}
       </div>
-      <div className="Group2 d-flex justify-content-around">
-        <Button name="7" />
-        <Button name="8" />
-        <Button name="9" />
-        <Button name="X" />
+      <div>
+        {buttonGroups(group2)}
       </div>
-      <div className="Group3 d-flex justify-content-around">
-        <Button name="4" />
-        <Button name="5" />
-        <Button name="6" />
-        <Button name="-" />
+      <div>
+        {buttonGroups(group3)}
       </div>
-      <div className="Group4 d-flex justify-content-around">
-        <Button name="1" />
-        <Button name="2" />
-        <Button name="3" />
-        <Button name="+" />
+      <div>
+        {buttonGroups(group4)}
       </div>
-      <div className="Group5 d-flex justify-content-around">
-        <Button name="0" />
-        <Button name="." />
-        <Button name="=" />
+      <div>
+        {buttonGroups(group5)}
       </div>
     </div>
   );
 }
+
+export default ButtonPanel;
+
+
+
