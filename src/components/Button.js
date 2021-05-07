@@ -1,22 +1,18 @@
-import React from 'react'; // eslint-disable-line no-unused-vars
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const Button = (props) => {
-
-  const clickHandler = () => props.clickHandler(props.name)
-
-
+export default function Button({
+  buttonName, wide, handleClick,
+}) {
   return (
-    <button className={'button'} style={{ backgroundColor: (props.color === 'orange' ? '' : 'lightGray'), width: (props.width === true ? '50%' : '') }} onClick={() => clickHandler()}>
-      {props.name}
-    </button >
+    <div className={wide ? 'zerobtn-style' : 'button-style'}>
+      <button type="button" className="name-buttons" onClick={() => handleClick(buttonName)}>{ buttonName }</button>
+    </div>
   );
 }
 
 Button.propTypes = {
-  name: PropTypes.string.isRequired,
-  width: PropTypes.bool.isRequired,
-  color: PropTypes.string
-}
-
-export default Button;
+  buttonName: PropTypes.string.isRequired,
+  wide: PropTypes.bool.isRequired,
+  handleClick: PropTypes.func.isRequired,
+};

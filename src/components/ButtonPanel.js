@@ -1,44 +1,43 @@
-import React from 'react'; // eslint-disable-line no-unused-vars
-import Button from './Button' // eslint-disable-line no-unused-vars
+import React from 'react';
+import PropTypes from 'prop-types';
+import Button from './Button';
 
-const ButtonPanel = (props) => {
-  const group1 = ['AC', '+/-', '%', '/']
-  const group2 = ['7', '8', '9', 'x']
-  const group3 = ['4', '5', '6', '-']
-  const group4 = ['1', '2', '3', '+']
-  const group5 = ['0', '.', '=']
-
-  const buttonGroups = (group) => group.map((button) =>
-    (button === '0' ? <Button key={button} name={button} width={true} clickHandler={props.clickHandler} />
-      : (button === group[group.length - 1] ? (props.operation === button
-        ? <Button key={button} name={button} color='white' width={false} clickHandler={props.clickHandler} />
-        : <Button key={button} name={button} color='orange' width={false} clickHandler={props.clickHandler} />)
-        : <Button key={button} name={button} width={false} clickHandler={props.clickHandler} />))
-  )
-
-
+export default function ButtonPanel({ clickHandler }) {
   return (
-    <div className='buttonPanel'>
-      <div>
-        {buttonGroups(group1)}
+    <div className="groups">
+      <div className="Group1 d-flex justify-content-around">
+        <Button buttonName="AC" color="#EFEFEF" handleClick={clickHandler} />
+        <Button buttonName="+/-" color="#EFEFEF" handleClick={clickHandler} />
+        <Button buttonName="%" color="#EFEFEF" handleClick={clickHandler} />
+        <Button buttonName="÷" handleClick={clickHandler} />
       </div>
-      <div>
-        {buttonGroups(group2)}
+      <div className="Group2 d-flex justify-content-around">
+        <Button buttonName="7" color="#EFEFEF" handleClick={clickHandler} />
+        <Button buttonName="8" color="#EFEFEF" handleClick={clickHandler} />
+        <Button buttonName="9" color="#EFEFEF" handleClick={clickHandler} />
+        <Button buttonName="X" handleClick={clickHandler} />
       </div>
-      <div>
-        {buttonGroups(group3)}
+      <div className="Group3 d-flex justify-content-around">
+        <Button buttonName="4" color="#EFEFEF" handleClick={clickHandler} />
+        <Button buttonName="5" color="#EFEFEF" handleClick={clickHandler} />
+        <Button buttonName="6" color="#EFEFEF" handleClick={clickHandler} />
+        <Button buttonName="-" handleClick={clickHandler} />
       </div>
-      <div>
-        {buttonGroups(group4)}
+      <div className="Group4 d-flex justify-content-around">
+        <Button buttonName="1" color="#EFEFEF" handleClick={clickHandler} />
+        <Button buttonName="2" color="#EFEFEF" handleClick={clickHandler} />
+        <Button buttonName="3" color="#EFEFEF" handleClick={clickHandler} />
+        <Button buttonName="+" handleClick={clickHandler} />
       </div>
-      <div>
-        {buttonGroups(group5)}
+      <div className="Group5 d-flex">
+        <Button buttonName="0" wide color="#EFEFEF" handleClick={clickHandler} />
+        <Button buttonName="." color="#EFEFEF" handleClick={clickHandler} />
+        <Button buttonName="=" handleClick={clickHandler} />
       </div>
     </div>
   );
 }
 
-export default ButtonPanel;
-
-
-
+ButtonPanel.propTypes = {
+  clickHandler: PropTypes.func.isRequired,
+};
