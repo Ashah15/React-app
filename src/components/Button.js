@@ -1,18 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Button({
-  buttonName, wide, handleClick,
-}) {
+const Button = ({
+  buttonName, color, wide, clickHandler,
+}) => {
+  const styleButton = {
+    backgroundColor: `${color}`,
+  };
+
+  if (wide) {
+    styleButton.gridColumn = '1 / span 2';
+  }
   return (
-    <div className={wide ? 'zerobtn-style' : 'button-style'}>
-      <button type="button" className="name-buttons" onClick={() => handleClick(buttonName)}>{ buttonName }</button>
-    </div>
+    <button
+      className="button"
+      type="button"
+      style={styleButton}
+      onClick={() => {
+        clickHandler(buttonName);
+      }}
+    >
+      {buttonName}
+    </button>
   );
-}
+};
 
 Button.propTypes = {
   buttonName: PropTypes.string.isRequired,
   wide: PropTypes.bool.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  color: PropTypes.string,
+  clickHandler: PropTypes.func.isRequired,
 };
+
+Button.defaultProps = {
+  color: 'orange',
+};
+
+export default Button;
