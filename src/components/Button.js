@@ -27,7 +27,7 @@ const Button = ({
 
 Button.propTypes = {
   buttonName: PropTypes.string.isRequired,
-  wide: PropTypes.bool.isRequired,
+  wide: PropTypes.bool
   color: PropTypes.string,
   clickHandler: PropTypes.func.isRequired,
 };
