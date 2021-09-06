@@ -18,11 +18,11 @@ The app was deployed using Netlify
 
 ### Live Link
 
-[Click Here](https://jovial-visvesvaraya-43cbcc.netlify.app/)
+[Click Here](https://vibrant-pasteur-994607.netlify.app)
 
 ### Screenshot
 
-![calcmilestone2](https://user-images.githubusercontent.com/25789605/114098311-d8517e80-98c9-11eb-984f-0ae859457cbd.png)
+![calc](https://user-images.githubusercontent.com/25789605/132257339-b677fa2d-84b9-4b72-be8e-7920b8e3e587.png)
 
 ### Getting Started
 

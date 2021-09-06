@@ -1,33 +1,35 @@
 import Big from 'big.js';
 
-const operate = (numberOne, numberTwo, operator) => {
-  const regex = new RegExp('[.]{2,}');
+const operate = (numberOne, numberTwo, operation) => {
+  let result = 0;
+  const firstNumber = Big(numberOne || '0');
+  const secondNumber = Big(numberTwo || '0');
 
-  if (regex.test(numberOne) || regex.test(numberTwo)) {
-    return 'error';
+  if (operation === '+') {
+    result = firstNumber.plus(secondNumber).toFixed();
   }
-  const numOne = numberOne === null ? Big(0) : Big(numberOne);
-  const numTwo = numberTwo === null ? Big(0) : Big(numberTwo);
 
-  switch (operator) {
-    case '+':
-      return numOne.plus(numTwo).toString();
-
-    case '-':
-      return numOne.minus(numTwo).toString();
-
-    case 'x':
-      return numOne.times(numTwo).toString();
-
-    case '/':
-      return numOne.div(numTwo).toString();
-
-    case '%':
-      return (numOne / 100) * numTwo;
-
-    default:
-      return 'error';
+  if (operation === '-') {
+    result = firstNumber.minus(secondNumber).toFixed();
   }
+
+  if (operation === 'X') {
+    result = firstNumber.times(secondNumber).toFixed();
+  }
+
+  if (operation === '÷') {
+    try {
+      result = firstNumber.div(secondNumber).toFixed();
+    } catch (err) {
+      result = 'UNDEFINED';
+    }
+  }
+
+  if (operation === '%') {
+    result = (firstNumber.plus(secondNumber)).div(100).toFixed();
+  }
+
+  return result;
 };
 
 export default operate;
