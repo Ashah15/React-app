@@ -18,7 +18,7 @@ The app was deployed using Netlify
 
 ### Live Link
 
-[Click Here](https://jovial-visvesvaraya-43cbcc.netlify.app/)
+[Click Here](https://vibrant-pasteur-994607.netlify.app)
 
 ### Screenshot
 
