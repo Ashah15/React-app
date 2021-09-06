@@ -28,7 +28,7 @@ export default class App extends React.Component {
   render() {
     const { next, result, operation } = this.state;
     return (
-      <div className="app d-flex flex-column mt-5">
+      <div className="app">
         <Display result={result} next={next} operation={operation} />
         <ButtonPanel clickHandler={buttonName => this.handleClick(buttonName)} />
       </div>

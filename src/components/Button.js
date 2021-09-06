@@ -1,39 +1,26 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/default-props-match-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({
-  buttonName, color, wide, clickHandler,
-}) => {
-  const styleButton = {
-    backgroundColor: `${color}`,
-  };
-
-  if (wide) {
-    styleButton.gridColumn = '1 / span 2';
-  }
+export default function Button({
+  buttonName, color, wide, handleClick,
+}) {
   return (
-    <button
-      className="button"
-      type="button"
-      style={styleButton}
-      onClick={() => {
-        clickHandler(buttonName);
-      }}
-    >
-      {buttonName}
-    </button>
+    <div className={wide ? 'zerobtn-style' : 'button-style'}>
+      <button type="button" className="name-buttons" style={{ backgroundColor: color }} onClick={() => handleClick(buttonName)}>{ buttonName }</button>
+    </div>
   );
+}
+
+Button.defaultProps = {
+  color: 'orange',
+  wide: false,
 };
 
 Button.propTypes = {
   buttonName: PropTypes.string.isRequired,
-  wide: PropTypes.bool
   color: PropTypes.string,
-  clickHandler: PropTypes.func.isRequired,
+  wide: PropTypes.bool,
+  handleClick: PropTypes.func.isRequired,
 };
-
-Button.defaultProps = {
-  color: 'orange',
-};
-
-export default Button;
