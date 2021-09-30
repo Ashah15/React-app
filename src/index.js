@@ -4,11 +4,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // import PropTypes from 'prop-types';
 // import Big from 'big.js';
-import App from './components/App';
+import Routes from './Routes';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Routes />
   </React.StrictMode>,
   document.getElementById('root'),
-);
+);  

@@ -1,0 +1,29 @@
+import './App.css';
+import React, { useState } from 'react';
+import Display from '../../components/Display';
+import ButtonPanel from '../../components/ButtonPanel';
+import calculate from '../../logic/calculate';
+
+const App = () => {
+  const [state, setState] = useState({
+    total: null,
+    next: null,
+    operation: null,
+  });
+
+  const { total, next, operation } = state;
+
+  const handleClick = buttonName => {
+    const name = buttonName.target.textContent;
+    setState(state => calculate(state, name));
+  };
+
+  return (
+    <div className="main-container">
+      <Display result={total} next={next} operation={operation} />
+      <ButtonPanel clickHandler={handleClick} />
+    </div>
+  );
+};
+
+export default App;
