@@ -1,4 +1,5 @@
-import './Home.styles.css';
+/* eslint-disable react/react-in-jsx-scope */
+import './Home.style.css';
 
 const Home = () => (
   <>

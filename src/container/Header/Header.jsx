@@ -1,5 +1,6 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { Link } from 'react-router-dom';
-import './Header.styles.css';
+import './Header.style.css';
 
 const Header = () => (
   <header>
