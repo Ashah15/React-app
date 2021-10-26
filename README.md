@@ -22,7 +22,7 @@ The app was deployed using Netlify
 
 ### Screenshot
 
-![calc](https://user-images.githubusercontent.com/25789605/132257339-b677fa2d-84b9-4b72-be8e-7920b8e3e587.png)
+![mathemagician](https://user-images.githubusercontent.com/25789605/138909059-6e39d33d-bed4-461f-8f6d-7df0a643187a.png)
 
 ### Getting Started
 
