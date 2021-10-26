@@ -1,7 +1,8 @@
 .calculator-container {
-    display: flex;
-    margin-top: 25px;
+  display: flex;
+  margin-top: 25px;
 }
+
 .calculator-container .main-container {
-    width: 60%;
+  width: 60%;
 }
