@@ -18,7 +18,7 @@ The app was deployed using Netlify
 
 ### Live Link
 
-[Click Here](https://vibrant-pasteur-994607.netlify.app)
+[Click Here](https://flamboyant-mclean-dae107.netlify.app/calculator)
 
 ### Screenshot
 
