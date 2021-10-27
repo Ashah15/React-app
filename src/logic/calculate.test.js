@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable react/react-in-jsx-scope */
 import calculate from './calculate';
 
 describe('calculate', () => {
