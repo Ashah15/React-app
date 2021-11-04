@@ -4,9 +4,9 @@ exports[`renders learn react link 1`] = `
 <blockquote
   id="quote"
 >
-  The only way to learn mathematics is to do mathematics. 
+  Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding. 
   <span>
-    - Paul Halmos
+    - William Paul Thurston
   </span>
 </blockquote>
 `;
