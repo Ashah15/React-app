@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders learn react link 1`] = `
+<blockquote
+  id="quote"
+>
+  The only way to learn mathematics is to do mathematics. 
+  <span>
+    - Paul Halmos
+  </span>
+</blockquote>
+`;
