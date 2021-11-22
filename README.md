@@ -18,7 +18,7 @@ The app was deployed using Netlify
 
 ### Live Link
 
-[Click Here](https://flamboyant-mclean-dae107.netlify.app/calculator)
+[Click Here](https://flamboyant-mclean-dae107.netlify.app/)
 
 ### Screenshot
 
